@@ -19,9 +19,8 @@ def memoryUsage(totalMemory, foregroundApps, backgroundApps)
 
       # Append to memoryPairings only if totalMemoryUsed is less than or equal to totalMemory
       if totalMemoryUsed <= totalMemory
-        next
+        memoryPairings << [[foreground_app[0], backgound_app[0]], totalMemoryUsed]
       end
-      memoryPairings << [[foreground_app[0], backgound_app[0]], totalMemoryUsed]
     end
   end
 
