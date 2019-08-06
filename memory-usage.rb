@@ -4,6 +4,11 @@ def memoryUsage(totalMemory, foregroundApps, backgroundApps)
   return "Error: totalMemory must be an Integer." if ! totalMemory.is_a? Integer
   return "Error: totalMemory must be postitive Integer" if totalMemory < 1
 
+  # Validate app arrays
+  if ! foregroundApps.kind_of?(Array) || ! backgroundApps.kind_of?(Array)
+    return "Error: foregroundApps and backgroundApps must be an array."
+  end
+
 
   # All possible pairs
   memoryPairings = []
@@ -23,6 +28,9 @@ def memoryUsage(totalMemory, foregroundApps, backgroundApps)
       end
     end
   end
+
+  # Make sure memoryPairings has something in it
+  return [] if memoryPairings.count == 0
 
   # Reverse sort memoryPairings
   memoryPairings.sort! {|a,b| b[1] <=> a[1]}
@@ -47,8 +55,13 @@ def memoryUsage(totalMemory, foregroundApps, backgroundApps)
 end
 
 
-# Some tests
+# Some failed tests
 p memoryUsage('10', [[1,2], [2,5], [3,8]], [[1,4]])
 p memoryUsage(-10, [[1,2], [2,5], [3,8]], [[1,4]])
+p memoryUsage(10, [[1,10], [2,15], [3,17]], [[1,3], [2,5]])
+p memoryUsage(10, 12, [[1,4]])
+p memoryUsage(10, [[1,2], [2,5], [3,8]], "String")
+
+# Successful tests
 p memoryUsage(10, [[1,2], [2,5], [3,8]], [[1,4]])
 p memoryUsage(20, [[1,10], [2,15], [3,17]], [[1,3], [2,5]])
