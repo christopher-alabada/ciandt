@@ -1,13 +1,9 @@
 ## VM Memory app
 def memoryUsage(totalMemory, foregroundApps, backgroundApps)
-  # lets validate
-  # return "totalMemory must be a positive Integer." unless totalMemory.is_a? Integer && totalMemory < 1
+  # Validate totalMemory
+  return "Error: totalMemory must be an Integer." if ! totalMemory.is_a? Integer
+  return "Error: totalMemory must be postitive Integer" if totalMemory < 1
 
-  # get count of each app array
-
-  # loop through larger array
-
-  # add memory, save id's, put in result array
 
   memRanking = []
 
@@ -42,6 +38,8 @@ def memoryUsage(totalMemory, foregroundApps, backgroundApps)
 end
 
 
+p memoryUsage('10', [[1,2], [2,5], [3,8]], [[1,4]])
+p memoryUsage(-10, [[1,2], [2,5], [3,8]], [[1,4]])
 p memoryUsage(10, [[1,2], [2,5], [3,8]], [[1,4]])
 p memoryUsage(20, [[1,10], [2,15], [3,17]], [[1,3], [2,5]])
 
